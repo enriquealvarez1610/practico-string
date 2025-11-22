@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void leerTexto(string &texto) {
+    cout << "Introduce un texto: ";
+    getline(cin, texto);
+}
+
+void convertirAMayusculas(string &texto) {
+    for (size_t i = 0; i < texto.length(); ++i) {
+        if (texto[i] >= 'a' && texto[i] <= 'z') {
+            texto[i] = texto[i] - ('a' - 'A'); // conversión sin <cctype>
+        }
+    }
+}
+
+void mostrarTexto(const string &texto) {
+    cout << "Texto en mayúsculas: " << texto << endl;
+}
+
+int main() {
+    string texto;
+    leerTexto(texto);
+    convertirAMayusculas(texto);
+    mostrarTexto(texto);
+    return 0;
+}
