@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void leerCadena(string &cadena) {
+    cout << "Ingrese una cadena: ";
+    getline(cin, cadena);
+}
+
+bool esPalindromo(const string &cadena) {
+    string copia;
+    for (char c : cadena) {
+        if (c != ' ')
+            copia += tolower(c);
+    }
+
+    int i = 0;
+    int j = copia.length() - 1;
+
+    while (i < j) {
+        if (copia[i] != copia[j])
+            return false;
+        i++;
+        j--;
+    }
+    return true;
+}
+
+void mostrarResultado(bool r) {
+    if (r)
+        cout << "Es palindromo" << endl;
+    else
+        cout << "No es palindromo" << endl;
+}
+
+int main() {
+    string texto;
+    leerCadena(texto);
+
+    bool r = esPalindromo(texto);
+
+    mostrarResultado(r);
+
+    return 0;
+}
