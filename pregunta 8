@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void leerPalabras(string palabras[], int n) {
+    cout << "Ingrese " << n << " palabras:" << endl;
+    for (int i = 0; i < n; ++i) {
+        cin >> palabras[i];
+    }
+}
+
+void ordenarPalabras(string palabras[], int n) {
+    // Ordenamiento burbuja/simple sobre el arreglo de strings
+    for (int i = 0; i < n - 1; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (palabras[j] < palabras[i]) {
+                string temp = palabras[i];
+                palabras[i] = palabras[j];
+                palabras[j] = temp;
+            }
+        }
+    }
+}
+
+void mostrarCadena(const string palabras[], int n) {
+    cout << "Cadena ordenada: ";
+    for (int i = 0; i < n; ++i) {
+        cout << palabras[i];
+        if (i < n - 1) cout << ' ';
+    }
+    cout << endl;
+}
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de palabras a leer: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Cantidad invalida." << endl;
+        return 0;
+    }
+
+    string* palabras = new string[n];
+    leerPalabras(palabras, n);
+    ordenarPalabras(palabras, n);
+    mostrarCadena(palabras, n);
+    delete[] palabras;
+
+    return 0;
+}
