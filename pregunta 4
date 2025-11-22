@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string invertirCadena(const string& texto) {
+    string resultado = texto;
+    size_t n = resultado.length();
+    for (size_t i = 0; i < n / 2; ++i) {
+        swap(resultado[i], resultado[n - i - 1]);
+    }
+    return resultado;
+}
+int main() {
+    string texto;
+    cout << "Ingrese una cadena de texto: ";
+    getline(cin, texto);
+
+    string textoInvertido = invertirCadena(texto);
+    cout << "Cadena invertida: " << textoInvertido << endl;
+
+    return 0;
+}
