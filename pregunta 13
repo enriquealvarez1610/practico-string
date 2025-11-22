@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void leerCadenas(string& cadenaPrincipal, string& subcadena) {
+    cout << "Ingrese la cadena principal: ";
+    getline(cin, cadenaPrincipal);
+    cout << "Ingrese la subcadena a buscar: ";
+    getline(cin, subcadena);
+}
+int buscarSubCadena(const string& cadenaPrincipal, const string& subcadena) {
+    size_t posicion = cadenaPrincipal.find(subcadena);
+    if (posicion != string::npos) {
+        return (int)posicion; // Convertir size_t a int
+    } else {
+        return -1; // No encontrada
+    }
+}
+void mostrarResultado(int posicion) {
+    if (posicion != -1) {
+        cout << "La subcadena fue encontrada en la posicion: " << posicion << endl;
+    } else {
+        cout << "La subcadena no fue encontrada." << endl;
+    }
+}
+int main() {
+    string cadenaPrincipal, subcadena;
+    leerCadenas(cadenaPrincipal, subcadena);
+    int posicion = buscarSubCadena(cadenaPrincipal, subcadena);
+    mostrarResultado(posicion);
+    return 0;
+}
+
+            
