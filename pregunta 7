@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void leerCadena(string& cadena, int n) {
+    cout << "Ingrese " << n << " caracteres:" << endl;
+    cadena.clear();
+    for (int i = 0; i < n; ++i) {
+        char c;
+        cin >> c;
+        cadena += c;
+    }
+}
+void ordenarCadena(string& cadena) {
+    int len = (int)cadena.length();
+    for (int i = 0; i < len - 1; ++i) {
+        for (int j = i + 1; j < len; ++j) {
+            if (cadena[j] < cadena[i]) {
+                char temp = cadena[i];
+                cadena[i] = cadena[j];
+                cadena[j] = temp;
+            }
+        }
+    }
+}
+void mostrarCadena(const string& cadena) {
+    cout << "Cadena en orden alfabetico: " << cadena << endl;
+}
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de caracteres a leer: ";
+    cin >> n;
+
+    string cadena;
+    leerCadena(cadena, n);
+    ordenarCadena(cadena);
+    mostrarCadena(cadena);
+
+    return 0;
+}
