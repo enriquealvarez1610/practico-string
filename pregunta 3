@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string convertirAMayusculas(const string& texto) {
+    string resultado = texto;
+    bool nuevaPalabra = true;
+
+    for (size_t i = 0; i < resultado.length(); ++i) {
+        if (isspace(resultado[i])) {
+            nuevaPalabra = true;
+        } else if (nuevaPalabra) {
+            resultado[i] = toupper(resultado[i]);
+            nuevaPalabra = false;
+        }
+    }
+
+    return resultado;
+}
+int main() {
+    string texto;
+    cout << "Ingrese una cadena de texto: ";
+    getline(cin, texto);
+
+    string textoConvertido = convertirAMayusculas(texto);
+    cout << "Cadena con mayúsculas al inicio de cada palabra: " << textoConvertido << endl;
+
+    return 0;
+}
