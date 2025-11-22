@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void leerCadena(string& cadena, int& p, int& n) {
+    cout << "Ingrese una cadena de texto: ";
+    getline(cin, cadena);
+    cout << "Ingrese la posicion inicial (p): ";
+    cin >> p;
+    cout << "Ingrese la longitud de la subcadena (n): ";
+    cin >> n;
+}
+string extraerSubCadena(const string& cadena, int p, int n) {
+    if (p < 0 || n < 0 || p + n > (int)cadena.length()) {
+        return ""; // Retorna cadena vacía si los parámetros son inválidos
+    }
+    return cadena.substr(p, n);
+}
+void mostrarSubCadena(const string& subcadena) {
+    if (subcadena.empty()) {
+        cout << "Parametros invalidos para extraer la subcadena." << endl;
+    } else {
+        cout << "La subcadena extraida es: " << subcadena << endl;
+    }
+}
+int main() {
+    string cadena;
+    int p, n;
+    leerCadena(cadena, p, n);
+    string subcadena = extraerSubCadena(cadena, p, n);
+    mostrarSubCadena(subcadena);
+    return 0;
+}
