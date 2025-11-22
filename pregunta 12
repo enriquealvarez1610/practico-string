@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void leerCadenaYCaracter(string& cadena, char& caracter) {
+    cout << "Ingrese una cadena de texto: ";
+    getline(cin, cadena);
+    cout << "Ingrese el caracter a borrar: ";
+    cin >> caracter;
+}
+string borraCaracterDeCadena(const string& cadena, char caracter) {
+    string resultado;
+    for (char c : cadena) {
+        if (c != caracter) {
+            resultado += c;
+        }
+    }
+    return resultado;
+}
+void mostrarCadena(const string& cadena) {
+    cout << "Cadena resultante: " << cadena << endl;
+}
+int main() {
+    string cadena;
+    char caracter;
+    leerCadenaYCaracter(cadena, caracter);
+    string cadenaModificada = borraCaracterDeCadena(cadena, caracter);
+    mostrarCadena(cadenaModificada);
+    return 0;
+}
